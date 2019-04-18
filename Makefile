@@ -12,7 +12,7 @@ main.o: main.cpp Tester.h
 
 
 #Add needed Test.o recipe and compiler command
-Tester.o: Tester.h Tester.cpp
+Tester.o: Tester.h Tester.cpp LinkedListOfInts.h
 	g++ -g -Wall -std=c++11 -c Tester.cpp
 
 #DON'T delete LinkedList.o!
