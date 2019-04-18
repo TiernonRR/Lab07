@@ -1,7 +1,7 @@
 #ifndef TESTER_H
 #define TESTER_H
 
-#include "LinkedListOfInts.h"
+#include "LinkedListOfInts.h";
 using namespace std;
 
 class Tester{
