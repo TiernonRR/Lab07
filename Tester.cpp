@@ -160,7 +160,7 @@ void Tester::searchTester()
     }
 }
 
-void Tester::addBack()
+void Tester::addBackTester()
 {
     LinkedListOfInts testList;
     
@@ -182,5 +182,16 @@ void Tester::addBack()
     testList.addBack(9);
     testList.addBack(10);
 
+    vector<int> testVector = testList.toVector();
+    vector<int> compVector{1,2,3,4,5,6,7,8,9,10};
+
+    cout << "addBack test for multiple addBack calls: ";
+    if(testVector == compVector){
+        addBackGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
     
 }
