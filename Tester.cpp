@@ -19,6 +19,7 @@ Tester::Tester()
 void Tester::constructorTester()
 {
     LinkedListOfInts testList;
+
     cout << "Constructor Test: ";
     if(!(testList.size())){
         constructorGrade++;
@@ -45,6 +46,23 @@ void Tester::isEmptyTester()
     }
     else{
         cout << "Failed" << endl;
+    }
+
+    testList.addFront(1);
+    testList.addFront(2);
+    testList.addFront(3);
+    testList.addFront(4);
+    testList.addFront(5);
+    testList.addFront(6);
+    testList.addFront(7);
+
+    cout << "isEmpty Test on Filled List: ";
+    if(testList.isEmpty()){
+        cout << "Failed" << endl;
+    }   
+    else{
+        emptyGrade++;
+        cout << "Passed" << endl;
     }
 }
 
@@ -84,4 +102,85 @@ void Tester::sizeTester()
     else{
         cout << "Failed" << endl;
     }
+}
+
+void Tester::searchTester()
+{
+    LinkedListOfInts testList;
+
+    bool searchVal = testList.search(900);
+    cout << "Search test for empty list: ";
+
+    if(searchVal){
+        cout << "Failed" << endl;
+    }
+    else{
+        searchGrade++;
+        cout << "Passed" << endl;
+    }
+
+    testList.addFront(11);
+    testList.addFront(12);
+    testList.addFront(77);
+    testList.addFront(900);
+    testList.addFront(11);
+
+    searchVal = testList.search(900);
+
+    cout << "Search test for int that is in list: ";
+    if(searchVal){
+        searchGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+    
+    searchVal = testList.search(490);
+    cout << "Search test for int that is not in list: ";
+    if(!searchVal){
+        searchGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+
+    testList.removeFront();
+    testList.removeFront();
+
+    searchVal = testList.search(900);
+    cout << "Search test for int that has been removed from list: ";
+    if(!searchVal){
+        searchGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+}
+
+void Tester::addBack()
+{
+    LinkedListOfInts testList;
+    
+    testList.addBack(1);
+    cout << "addBack test for adding to empty list: ";
+
+    if(testList.search(1)){
+        addBackGrade++;
+        cout << "Passed" << endl;
+    }
+    
+    testList.addBack(2);
+    testList.addBack(3);
+    testList.addBack(4);
+    testList.addBack(5);
+    testList.addBack(6);
+    testList.addBack(7);
+    testList.addBack(8);
+    testList.addBack(9);
+    testList.addBack(10);
+
+    
 }
