@@ -4,7 +4,7 @@
 
 #Add needed Test.o
 prog: main.o Tester.o
-	g++ -g -Wall -std=c++11 main.o Tester.o LinkedListOfInts.o -o prog
+	g++ -g -Wall -std=c++11 main.o LinkedListOfInts.o Tester.o -o prog
 
 
 main.o: main.cpp Tester.h
