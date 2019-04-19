@@ -195,3 +195,19 @@ void Tester::addBackTester()
     }
     
 }
+
+void Tester::removeBackTester()
+{
+    LinkedListOfInts testList;
+    cout << "removeBackTester for ";
+    testList.addBack(1);
+    testList.addBack(2);
+    testList.addBack(3);
+    testList.addBack(4);
+    testList.addBack(5);
+    testList.addBack(6);
+    testList.addBack(7);
+    testList.addBack(8);
+    testList.addBack(9);
+    testList.addBack(10);
+}
