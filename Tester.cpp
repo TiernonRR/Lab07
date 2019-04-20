@@ -160,6 +160,51 @@ void Tester::searchTester()
     }
 }
 
+void Tester::addFrontTester()
+{
+    LinkedListOfInts testList;
+    bool testVal = true;
+    testList.addFront(1);
+    
+    vector<int> testVector = testList.toVector();
+    vector<int> compVector{1};
+
+    cout << "Test for addFront on empty list: ";
+    if(testVector[0] == compVector[0]){
+        addFrontGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+
+    testList.addFront(2);
+    testList.addFront(3);
+    testList.addFront(4);
+    testList.addFront(5);
+    testList.addFront(6);
+    testList.addFront(7);
+    testList.addFront(8);
+    testList.addFront(9);
+    testList.addFront(10);
+    testVector = testList.toVector();
+    for(int i=0; i < testVector.size(); i++){
+        if(testVector[i] != (10-i)){
+            testVal = false;
+            break;
+        }
+    }
+    cout << "Test for multiple addFront calls: ";
+    if(testVal){
+        addFrontGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+
+}
+
 void Tester::addBackTester()
 {
     LinkedListOfInts testList;
@@ -210,4 +255,9 @@ void Tester::removeBackTester()
     testList.addBack(8);
     testList.addBack(9);
     testList.addBack(10);
+
+    testList.removeBack();
+    vector<int> testVector = testList.toVector();
+
+
 }
