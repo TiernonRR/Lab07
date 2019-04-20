@@ -239,17 +239,21 @@ void Tester::addBackTester()
         cout << "Failed" << endl;
     }
     
+    cout << "Test for addBack updating size: ";
     if(testList.size()==10){
+        addBackGrade++;
+        cout << testList.size() << endl;
         cout << "Passed" << endl;
     }
     else{
-        
+        cout << "Failed" << endl;
     }
 }
 
 void Tester::removeBackTester()
 {
     LinkedListOfInts testList;
+    bool testVal = true;
     if(!testList.removeBack()){
         cout << "Passed" << endl;
     }
@@ -270,6 +274,20 @@ void Tester::removeBackTester()
 
     testList.removeBack();
     vector<int> testVector = testList.toVector();
+    for(int i =0; i < testVector.size(); i++){
+        if(testVector[i] != (10-i)){
+            testVal=false;
+            break;
+        }
+    }
+    cout << "Test for calling removeBack on list of more than one: ";
+    if(testVal){
+        remBackGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
 
 
 }
