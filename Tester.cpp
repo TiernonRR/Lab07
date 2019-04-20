@@ -239,22 +239,34 @@ void Tester::addBackTester()
         cout << "Failed" << endl;
     }
     
+    if(testList.size()==10){
+        cout << "Passed" << endl;
+    }
+    else{
+        
+    }
 }
 
 void Tester::removeBackTester()
 {
     LinkedListOfInts testList;
-    cout << "removeBackTester for ";
-    testList.addBack(1);
-    testList.addBack(2);
-    testList.addBack(3);
-    testList.addBack(4);
-    testList.addBack(5);
-    testList.addBack(6);
-    testList.addBack(7);
-    testList.addBack(8);
-    testList.addBack(9);
-    testList.addBack(10);
+    if(!testList.removeBack()){
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+    cout << "Test for  ";
+    testList.addFront(1);
+    testList.addFront(2);
+    testList.addFront(3);
+    testList.addFront(4);
+    testList.addFront(5);
+    testList.addFront(6);
+    testList.addFront(7);
+    testList.addFront(8);
+    testList.addFront(9);
+    testList.addFront(10);
 
     testList.removeBack();
     vector<int> testVector = testList.toVector();

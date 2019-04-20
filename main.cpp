@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 	//myTester.runTests();
 
 	Tester myTests;
-	myTests.addFrontTester();
+	myTests.removeBackTester();
 	std::cout << "Running...\nAnd we're done.\nGoodbye.\n";
 	
 	return (0);
