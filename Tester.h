@@ -17,7 +17,7 @@ class Tester{
     int addFrontGrade;
     int remBackGrade;
     int remFrontGrade;
-    double totalGrade;
+    
   public:
     Tester();
     void constructorTester();
@@ -30,6 +30,7 @@ class Tester{
     void addFrontTester();
     void removeBackTester();
     void removeFrontTester();
+    void runTest();
 };
 
 #endif
