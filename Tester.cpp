@@ -13,7 +13,6 @@ Tester::Tester()
     int remBackGrade=0;
     int remFrontGrade=0;
 
-    double totalGrade=0;
 }
 
 void Tester::constructorTester()
@@ -24,6 +23,7 @@ void Tester::constructorTester()
     if(!(testList.size())){
         constructorGrade++;
         cout << "Passed" << endl;
+        cout << constructorGrade;
     }
     else{
         cout << "Failed" << endl;
@@ -288,6 +288,52 @@ void Tester::removeBackTester()
     else{
         cout << "Failed" << endl;
     }
+}
 
+void Tester::removeFrontTester()
+{
+    LinkedListOfInts testList;
+    cout << "Test for removeFront on empty list: ";
+    if(!testList.removeFront()){
+        remFrontGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+}
 
+void Tester::runTest()
+{
+    int totalGrade = constructorGrade + emptyGrade + sizeGrade
+                     + searchGrade + vectorGrade + addBackGrade
+                     + addFrontGrade + remBackGrade + remFrontGrade;
+
+    cout << " -- Constructor Tests -- " << endl;
+    constructorTester();
+    cout << "\n -- isEmpty Tests -- " << endl;
+    isEmptyTester();
+    cout << " \n -- size Tests -- " << endl;
+    sizeTester();
+    cout << " \n  -- search Tests -- " << endl;
+    searchTester();
+    cout << " \n  -- addBack Tests -- " << endl;
+    addBackTester();
+    cout << "\n -- addFront Tests --" << endl;
+    addFrontTester();
+    cout << "\n -- removeBack Tests --" << endl;
+    removeBackTester();
+    cout << " \n -- removeFront Tests --" << endl;
+    removeFrontTester();
+
+    cout << "Constructor Grade: " << (constructorGrade/1 * 100) << "%\n";
+    cout << "isEmpty Grade: " << (emptyGrade/2 * 100) << "%\n";
+    cout << "size Grade: " << (sizeGrade/3 * 100) << "%\n";
+    cout << "search Grade: " << (emptyGrade/4 * 100) << "%\n";
+    cout << "addBack Grade: " << (addBackGrade/3 * 100) << "%\n";
+    cout << "addFront Grade: " << (addFrontGrade/2 * 100) << "%\n";
+    cout << "removeBack Grade: " << (remBackGrade/3 * 100) << "%\n";
+    cout << "removeFront Grade: " << (remFrontGrade/3 * 100) << "%\n";
+    
+    cout << "\nFinal Grade: " << (totalGrade/21 * 100) << "%\n";
 }
