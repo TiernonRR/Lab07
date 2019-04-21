@@ -254,13 +254,14 @@ void Tester::removeBackTester()
 {
     LinkedListOfInts testList;
     bool testVal = true;
+    cout << "Test for removeBack on empty list: ";
     if(!testList.removeBack()){
         cout << "Passed" << endl;
     }
     else{
         cout << "Failed" << endl;
     }
-    cout << "Test for  ";
+    
     testList.addFront(1);
     testList.addFront(2);
     testList.addFront(3);
@@ -288,6 +289,15 @@ void Tester::removeBackTester()
     else{
         cout << "Failed" << endl;
     }
+
+    cout << "Test for removeBack properly updating size: ";
+    if(testList.size()==9){
+        remBackGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
 }
 
 void Tester::removeFrontTester()
@@ -301,6 +311,10 @@ void Tester::removeFrontTester()
     else{
         cout << "Failed" << endl;
     }
+
+    //test of one node
+    //test of more than one
+    //test that it modifies size, as well
 }
 
 void Tester::runTest()
