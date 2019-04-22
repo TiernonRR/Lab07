@@ -2,17 +2,16 @@
 
 Tester::Tester()
 {
-    int constructorGrade=0;
-    int destructorGrade=0;
-    int emptyGrade=0;
-    int sizeGrade=0;
-    int searchGrade=0;
-    int vectorGrade=0;
-    int addBackGrade=0;
-    int addFrontGrade=0;
-    int remBackGrade=0;
-    int remFrontGrade=0;
-
+    constructorGrade=0;
+    destructorGrade=0;
+    emptyGrade=0;
+    sizeGrade=0;
+    searchGrade=0;
+    vectorGrade=0;
+    addBackGrade=0;
+    addFrontGrade=0;
+    remBackGrade=0;
+    remFrontGrade=0;
 }
 
 void Tester::constructorTester()
@@ -21,7 +20,7 @@ void Tester::constructorTester()
 
     cout << "Constructor Test: ";
     if(!(testList.size())){
-        (this->constructorGrade)++;
+        (constructorGrade)++;
         cout << "Passed" << endl;
     }
     else{
@@ -32,13 +31,14 @@ void Tester::constructorTester()
 
 void Tester::destructorTester()
 {
-    //Test Destructor
+    //Test Destructor using valgrind
+    //Memory Leaks are present
 }
 
 void Tester::isEmptyTester()
 {
     LinkedListOfInts testList;
-    cout << "isEmpty Test: ";
+    cout << "Test for isEmpty on empty list: ";
     if(testList.isEmpty()){
         emptyGrade++;
         cout << "Passed" << endl;
@@ -405,11 +405,8 @@ void Tester::removeFrontTester()
 }
 
 void Tester::runTest()
-{
-    int totalGrade = constructorGrade + emptyGrade + sizeGrade
-                     + searchGrade + vectorGrade + addBackGrade
-                     + addFrontGrade + remBackGrade + remFrontGrade;
-
+{   
+    double totalGrade = 0;
     cout << " -- Constructor Tests -- " << endl;
     constructorTester();
     cout << "\n -- isEmpty Tests -- " << endl;
@@ -427,14 +424,16 @@ void Tester::runTest()
     cout << " \n -- removeFront Tests --" << endl;
     removeFrontTester();
 
-    cout << "\n\nConstructor Grade: " << (constructorGrade/1 * 100) << "%\n";
-    cout << "isEmpty Grade: " << (emptyGrade/2 * 100) << "%\n";
-    cout << "size Grade: " << (sizeGrade/3 * 100) << "%\n";
-    cout << "search Grade: " << (emptyGrade/4 * 100) << "%\n";
-    cout << "addBack Grade: " << (addBackGrade/3 * 100) << "%\n";
-    cout << "addFront Grade: " << (addFrontGrade/2 * 100) << "%\n";
-    cout << "removeBack Grade: " << (remBackGrade/3 * 100) << "%\n";
-    cout << "removeFront Grade: " << (remFrontGrade/3 * 100) << "%\n";
+    totalGrade = constructorGrade + emptyGrade + sizeGrade + searchGrade + vectorGrade + addBackGrade
+                                  + addFrontGrade + remBackGrade + remFrontGrade;
 
-    cout << "\nFinal Grade: " << (totalGrade/21 * 100) << "%\n";
+    cout << "\n\nConstructor Grade: " << (double(constructorGrade/1) * 100) << "%\n";
+    cout << "isEmpty Grade: " << ( double(emptyGrade/3) * 100) << "%\n";
+    cout << "size Grade: " << (double(sizeGrade/4) * 100) << "%\n";
+    cout << "search Grade: " << (double(searchGrade/4) * 100) << "%\n";
+    cout << "addBack Grade: " << (double(addBackGrade/3) * 100) << "%\n";
+    cout << "addFront Grade: " << (double(addFrontGrade/3) * 100) << "%\n";
+    cout << "removeBack Grade: " << (double(remBackGrade/4) * 100) << "%\n";
+    cout << "removeFront Grade: " << (double(remFrontGrade/4)* 100) << "%\n";
+    cout << "\nFinal Grade: " << (double(totalGrade/26) * 100) << "%\n";
 }

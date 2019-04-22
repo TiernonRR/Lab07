@@ -7,16 +7,16 @@ using namespace std;
 
 class Tester{
   private:
-    int constructorGrade;
-    int destructorGrade;
-    int emptyGrade;
-    int sizeGrade;
-    int searchGrade;
-    int vectorGrade;
-    int addBackGrade;
-    int addFrontGrade;
-    int remBackGrade;
-    int remFrontGrade;
+    double constructorGrade;
+    double destructorGrade;
+    double emptyGrade;
+    double sizeGrade;
+    double searchGrade;
+    double vectorGrade;
+    double addBackGrade;
+    double addFrontGrade;
+    double remBackGrade;
+    double remFrontGrade;
     
   public:
     Tester();
