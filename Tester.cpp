@@ -21,9 +21,8 @@ void Tester::constructorTester()
 
     cout << "Constructor Test: ";
     if(!(testList.size())){
-        constructorGrade++;
+        (this->constructorGrade)++;
         cout << "Passed" << endl;
-        cout << constructorGrade;
     }
     else{
         cout << "Failed" << endl;
@@ -49,6 +48,17 @@ void Tester::isEmptyTester()
     }
 
     testList.addFront(1);
+
+    cout << "Test for isEmpty on list of size one: ";
+
+    if(testList.isEmpty()){
+      cout << "Failed" << endl;
+    }
+    else{
+      emptyGrade++;
+      cout << "Passed" << endl;
+    }
+
     testList.addFront(2);
     testList.addFront(3);
     testList.addFront(4);
@@ -69,10 +79,19 @@ void Tester::isEmptyTester()
 void Tester::sizeTester()
 {
     LinkedListOfInts testList;
+    cout << "Size works for empty List: ";
+
+    if(testList.size() == 0){
+      cout << "Passed" << endl;
+      sizeGrade++;
+    }
+    else{
+      cout << "Failed" << endl;
+    }
 
     cout << "Size works with LinkedList of size 1: ";
     testList.addFront(11);
-    if(testList.size()){
+    if(testList.size()==1){
         sizeGrade++;
         cout << "Passed" << endl;
     }
@@ -83,14 +102,14 @@ void Tester::sizeTester()
 
     cout << "Size works after removal: ";
     testList.removeFront();
-    if(testList.size()){
+
+    if(testList.size()!=0){
         cout << "Failed" << endl;
     }
     else{
         sizeGrade++;
         cout << "Passed" << endl;
     }
-
     cout << "Size works after adding more than one node: ";
     for(int i = 0; i < 5; i++){
         testList.addFront(5);
@@ -202,6 +221,14 @@ void Tester::addFrontTester()
     else{
         cout << "Failed" << endl;
     }
+    cout << "Test for addFront update size: ";
+    if(testList.size() == 10){
+      addFrontGrade++;
+      cout << "Passed" << endl;
+    }
+    else{
+      cout << "Failed" << endl;
+    }
 
 }
 
@@ -257,6 +284,29 @@ void Tester::removeBackTester()
     cout << "Test for removeBack on empty list: ";
     if(!testList.removeBack()){
         cout << "Passed" << endl;
+        remBackGrade++;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+
+    cout << "Test for removeBack on list of size one: ";
+    testList.addFront(1);
+    testList.removeBack();
+    vector<int> testVector = testList.toVector();
+
+    if(testVector[0] == 1){
+      cout << "Passed" << endl;
+      remBackGrade++;
+    }
+    else{
+      cout << "Failed" << endl;
+    }
+
+    cout << "Test for removeBack properly updating size: ";
+    if(testList.size()==0){
+        remBackGrade++;
+        cout << "Passed" << endl;
     }
     else{
         cout << "Failed" << endl;
@@ -274,7 +324,7 @@ void Tester::removeBackTester()
     testList.addFront(10);
 
     testList.removeBack();
-    vector<int> testVector = testList.toVector();
+    testVector = testList.toVector();
     for(int i =0; i < testVector.size(); i++){
         if(testVector[i] != (10-i)){
             testVal=false;
@@ -290,19 +340,12 @@ void Tester::removeBackTester()
         cout << "Failed" << endl;
     }
 
-    cout << "Test for removeBack properly updating size: ";
-    if(testList.size()==9){
-        remBackGrade++;
-        cout << "Passed" << endl;
-    }
-    else{
-        cout << "Failed" << endl;
-    }
 }
 
 void Tester::removeFrontTester()
 {
     LinkedListOfInts testList;
+    bool testVal = true;
     cout << "Test for removeFront on empty list: ";
     if(!testList.removeFront()){
         remFrontGrade++;
@@ -312,9 +355,53 @@ void Tester::removeFrontTester()
         cout << "Failed" << endl;
     }
 
-    //test of one node
-    //test of more than one
-    //test that it modifies size, as well
+    testList.addFront(1);
+    testList.removeFront();
+    vector<int> testVector = testList.toVector();
+
+    cout << "Test for removeFront on one node: ";
+
+    if(testVector[0] == 1){
+      cout << "Failed" << endl;
+    }
+    else{
+      cout << "Passed" << endl;
+      remFrontGrade++;
+    }
+
+    cout << "Test for removeFront updating size: ";
+    if(testList.size() == 0){
+      cout << "Passed" << endl;
+      remFrontGrade++;
+    }
+    else{
+      cout << "Failed" << endl;
+    }
+
+    cout << "Test for removeFront on list of size greater than one: ";
+    testList.addFront(1);
+    testList.addFront(2);
+    testList.addFront(3);
+    testList.addFront(4);
+    testList.removeFront();
+    testList.removeFront();
+
+    testVector = testList.toVector();
+    for(int i = 0; i < testList.size(); i++){
+      if(testVector[i] != 2-i){
+        testVal = false;
+        break;
+      }
+    }
+
+    if(testVal){
+      cout << "Passed" << endl;
+      remFrontGrade++;
+    }
+    else{
+      cout << "Failed" << endl;
+    }
+
 }
 
 void Tester::runTest()
@@ -340,7 +427,7 @@ void Tester::runTest()
     cout << " \n -- removeFront Tests --" << endl;
     removeFrontTester();
 
-    cout << "Constructor Grade: " << (constructorGrade/1 * 100) << "%\n";
+    cout << "\n\nConstructor Grade: " << (constructorGrade/1 * 100) << "%\n";
     cout << "isEmpty Grade: " << (emptyGrade/2 * 100) << "%\n";
     cout << "size Grade: " << (sizeGrade/3 * 100) << "%\n";
     cout << "search Grade: " << (emptyGrade/4 * 100) << "%\n";

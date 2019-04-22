@@ -1,6 +1,6 @@
 /**
-*	@author 
-*	@date 
+*	@author
+*	@date
 *	@file main.cpp
 *	@brief driver for LinkedList demo
 */
@@ -20,9 +20,8 @@ int main(int argc, char** argv)
 
 	Tester myTests;
 	myTests.runTest();
-	std::cout << "Running...\nAnd we're done.\nGoodbye.\n";
-	
+	std::cout << "\n\nTests have been run.  See score. \n";
+
 	return (0);
 
 }
-
