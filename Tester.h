@@ -25,11 +25,11 @@ class Tester{
     void isEmptyTester();
     void sizeTester();
     void searchTester();
-    void toVectorTester();
     void addBackTester();
     void addFrontTester();
     void removeBackTester();
     void removeFrontTester();
+    void runTest();
 };
 
 #endif

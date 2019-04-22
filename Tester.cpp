@@ -24,6 +24,7 @@ void Tester::constructorTester()
     if(!(testList.size())){
         constructorGrade++;
         cout << "Passed" << endl;
+        cout << constructorGrade;
     }
     else{
         cout << "Failed" << endl;
@@ -288,6 +289,39 @@ void Tester::removeBackTester()
     else{
         cout << "Failed" << endl;
     }
+}
 
+void Tester::removeFrontTester()
+{
+    LinkedListOfInts testList;
+    cout << "Test for removeFront on empty list: ";
+    if(!testList.removeFront()){
+        remFrontGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+}
 
+void Tester::runTest()
+{
+    cout << " -- Constructor Tests -- " << endl;
+    constructorTester();
+    cout << "\n -- isEmpty Tests -- " << endl;
+    isEmptyTester();
+    cout << " \n -- size Tests -- " << endl;
+    sizeTester();
+    cout << " \n  -- search Tests -- " << endl;
+    searchTester();
+    cout << " \n  -- addBack Tests -- " << endl;
+    addBackTester();
+    cout << "\n -- addFront Tests --" << endl;
+    addFrontTester();
+    cout << "\n -- removeBack Tests --" << endl;
+    removeBackTester();
+    cout << " \n -- removeFront Tests --" << endl;
+    removeFrontTester();
+
+    cout << "Constructor Grade: " << (constructorGrade/1 * 100) << "%";
 }
