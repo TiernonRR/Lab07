@@ -13,7 +13,6 @@ Tester::Tester()
     int remBackGrade=0;
     int remFrontGrade=0;
 
-    double totalGrade=0;
 }
 
 void Tester::constructorTester()
@@ -255,13 +254,14 @@ void Tester::removeBackTester()
 {
     LinkedListOfInts testList;
     bool testVal = true;
+    cout << "Test for removeBack on empty list: ";
     if(!testList.removeBack()){
         cout << "Passed" << endl;
     }
     else{
         cout << "Failed" << endl;
     }
-    cout << "Test for  ";
+    
     testList.addFront(1);
     testList.addFront(2);
     testList.addFront(3);
@@ -291,6 +291,29 @@ void Tester::removeBackTester()
     }
 }
 
+<<<<<<< HEAD
+void Tester::removeFrontTester()
+{
+    LinkedListOfInts testList;
+    cout << "Test for removeFront on empty list: ";
+    if(!testList.removeFront()){
+        remFrontGrade++;
+=======
+    cout << "Test for removeBack properly updating size: ";
+    if(testList.size()==9){
+        remBackGrade++;
+>>>>>>> 4ebd4665f6fd1c76f11580452b920ee488d0c981
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+}
+
+<<<<<<< HEAD
+void Tester::runTest()
+{
+=======
 void Tester::removeFrontTester()
 {
     LinkedListOfInts testList;
@@ -302,10 +325,19 @@ void Tester::removeFrontTester()
     else{
         cout << "Failed" << endl;
     }
+
+    //test of one node
+    //test of more than one
+    //test that it modifies size, as well
 }
 
 void Tester::runTest()
 {
+    int totalGrade = constructorGrade + emptyGrade + sizeGrade
+                     + searchGrade + vectorGrade + addBackGrade
+                     + addFrontGrade + remBackGrade + remFrontGrade;
+
+>>>>>>> 4ebd4665f6fd1c76f11580452b920ee488d0c981
     cout << " -- Constructor Tests -- " << endl;
     constructorTester();
     cout << "\n -- isEmpty Tests -- " << endl;
@@ -323,5 +355,19 @@ void Tester::runTest()
     cout << " \n -- removeFront Tests --" << endl;
     removeFrontTester();
 
+<<<<<<< HEAD
     cout << "Constructor Grade: " << (constructorGrade/1 * 100) << "%";
 }
+=======
+    cout << "Constructor Grade: " << (constructorGrade/1 * 100) << "%\n";
+    cout << "isEmpty Grade: " << (emptyGrade/2 * 100) << "%\n";
+    cout << "size Grade: " << (sizeGrade/3 * 100) << "%\n";
+    cout << "search Grade: " << (emptyGrade/4 * 100) << "%\n";
+    cout << "addBack Grade: " << (addBackGrade/3 * 100) << "%\n";
+    cout << "addFront Grade: " << (addFrontGrade/2 * 100) << "%\n";
+    cout << "removeBack Grade: " << (remBackGrade/3 * 100) << "%\n";
+    cout << "removeFront Grade: " << (remFrontGrade/3 * 100) << "%\n";
+    
+    cout << "\nFinal Grade: " << (totalGrade/21 * 100) << "%\n";
+}
+>>>>>>> 4ebd4665f6fd1c76f11580452b920ee488d0c981
