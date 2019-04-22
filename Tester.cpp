@@ -59,7 +59,7 @@ void Tester::isEmptyTester()
     cout << "isEmpty Test on Filled List: ";
     if(testList.isEmpty()){
         cout << "Failed" << endl;
-    }   
+    }
     else{
         emptyGrade++;
         cout << "Passed" << endl;
@@ -76,7 +76,7 @@ void Tester::sizeTester()
         sizeGrade++;
         cout << "Passed" << endl;
     }
-    else 
+    else
     {
         cout << "Failed" << endl;
     }
@@ -135,7 +135,7 @@ void Tester::searchTester()
     else{
         cout << "Failed" << endl;
     }
-    
+
     searchVal = testList.search(490);
     cout << "Search test for int that is not in list: ";
     if(!searchVal){
@@ -165,7 +165,7 @@ void Tester::addFrontTester()
     LinkedListOfInts testList;
     bool testVal = true;
     testList.addFront(1);
-    
+
     vector<int> testVector = testList.toVector();
     vector<int> compVector{1};
 
@@ -208,7 +208,7 @@ void Tester::addFrontTester()
 void Tester::addBackTester()
 {
     LinkedListOfInts testList;
-    
+
     testList.addBack(1);
     cout << "addBack test for adding to empty list: ";
 
@@ -216,7 +216,7 @@ void Tester::addBackTester()
         addBackGrade++;
         cout << "Passed" << endl;
     }
-    
+
     testList.addBack(2);
     testList.addBack(3);
     testList.addBack(4);
@@ -238,7 +238,7 @@ void Tester::addBackTester()
     else{
         cout << "Failed" << endl;
     }
-    
+
     cout << "Test for addBack updating size: ";
     if(testList.size()==10){
         addBackGrade++;
@@ -261,7 +261,7 @@ void Tester::removeBackTester()
     else{
         cout << "Failed" << endl;
     }
-    
+
     testList.addFront(1);
     testList.addFront(2);
     testList.addFront(3);
@@ -289,20 +289,10 @@ void Tester::removeBackTester()
     else{
         cout << "Failed" << endl;
     }
-}
 
-<<<<<<< HEAD
-void Tester::removeFrontTester()
-{
-    LinkedListOfInts testList;
-    cout << "Test for removeFront on empty list: ";
-    if(!testList.removeFront()){
-        remFrontGrade++;
-=======
     cout << "Test for removeBack properly updating size: ";
     if(testList.size()==9){
         remBackGrade++;
->>>>>>> 4ebd4665f6fd1c76f11580452b920ee488d0c981
         cout << "Passed" << endl;
     }
     else{
@@ -310,10 +300,6 @@ void Tester::removeFrontTester()
     }
 }
 
-<<<<<<< HEAD
-void Tester::runTest()
-{
-=======
 void Tester::removeFrontTester()
 {
     LinkedListOfInts testList;
@@ -337,7 +323,6 @@ void Tester::runTest()
                      + searchGrade + vectorGrade + addBackGrade
                      + addFrontGrade + remBackGrade + remFrontGrade;
 
->>>>>>> 4ebd4665f6fd1c76f11580452b920ee488d0c981
     cout << " -- Constructor Tests -- " << endl;
     constructorTester();
     cout << "\n -- isEmpty Tests -- " << endl;
@@ -355,10 +340,6 @@ void Tester::runTest()
     cout << " \n -- removeFront Tests --" << endl;
     removeFrontTester();
 
-<<<<<<< HEAD
-    cout << "Constructor Grade: " << (constructorGrade/1 * 100) << "%";
-}
-=======
     cout << "Constructor Grade: " << (constructorGrade/1 * 100) << "%\n";
     cout << "isEmpty Grade: " << (emptyGrade/2 * 100) << "%\n";
     cout << "size Grade: " << (sizeGrade/3 * 100) << "%\n";
@@ -367,7 +348,6 @@ void Tester::runTest()
     cout << "addFront Grade: " << (addFrontGrade/2 * 100) << "%\n";
     cout << "removeBack Grade: " << (remBackGrade/3 * 100) << "%\n";
     cout << "removeFront Grade: " << (remFrontGrade/3 * 100) << "%\n";
-    
+
     cout << "\nFinal Grade: " << (totalGrade/21 * 100) << "%\n";
 }
->>>>>>> 4ebd4665f6fd1c76f11580452b920ee488d0c981
