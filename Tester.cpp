@@ -29,12 +29,6 @@ void Tester::constructorTester()
 
 }
 
-void Tester::destructorTester()
-{
-    //Test Destructor using valgrind
-    //Memory Leaks are present
-}
-
 void Tester::isEmptyTester()
 {
     LinkedListOfInts testList;
@@ -100,17 +94,8 @@ void Tester::sizeTester()
         cout << "Failed" << endl;
     }
 
-    cout << "Size works after removal: ";
-    testList.removeFront();
-
-    if(testList.size()!=0){
-        cout << "Failed" << endl;
-    }
-    else{
-        sizeGrade++;
-        cout << "Passed" << endl;
-    }
     cout << "Size works after adding more than one node: ";
+
     for(int i = 0; i < 5; i++){
         testList.addFront(5);
     }
@@ -121,6 +106,18 @@ void Tester::sizeTester()
     else{
         cout << "Failed" << endl;
     }
+
+    cout << "Size works after removal: ";
+    testList.removeFront();
+
+    if(testList.size()!=6){
+        cout << "Failed" << endl;
+    }
+    else{
+        sizeGrade++;
+        cout << "Passed" << endl;
+    }
+    
 }
 
 void Tester::searchTester()
@@ -169,7 +166,20 @@ void Tester::searchTester()
     testList.removeFront();
 
     searchVal = testList.search(900);
-    cout << "Search test for int that has been removed from list: ";
+    cout << "Search test after removeFront on list, looking for deleted value: ";
+    if(!searchVal){
+        searchGrade++;
+        cout << "Passed" << endl;
+    }
+    else{
+        cout << "Failed" << endl;
+    }
+
+    testList.removeBack();
+    testList.removeBack();
+
+    searchVal = testList.search(11);
+    cout << "Search test after removeBack on list, looking for deleted value: ";
     if(!searchVal){
         searchGrade++;
         cout << "Passed" << endl;
@@ -183,13 +193,12 @@ void Tester::addFrontTester()
 {
     LinkedListOfInts testList;
     bool testVal = true;
-    testList.addFront(1);
 
+    testList.addFront(1);
     vector<int> testVector = testList.toVector();
-    vector<int> compVector{1};
 
     cout << "Test for addFront on empty list: ";
-    if(testVector[0] == compVector[0]){
+    if(testVector[0] == 1){
         addFrontGrade++;
         cout << "Passed" << endl;
     }
@@ -221,6 +230,7 @@ void Tester::addFrontTester()
     else{
         cout << "Failed" << endl;
     }
+
     cout << "Test for addFront update size: ";
     if(testList.size() == 10){
       addFrontGrade++;
@@ -269,7 +279,6 @@ void Tester::addBackTester()
     cout << "Test for addBack updating size: ";
     if(testList.size()==10){
         addBackGrade++;
-        cout << testList.size() << endl;
         cout << "Passed" << endl;
     }
     else{
@@ -281,6 +290,7 @@ void Tester::removeBackTester()
 {
     LinkedListOfInts testList;
     bool testVal = true;
+    bool returnRemoveBack = false;
     cout << "Test for removeBack on empty list: ";
     if(!testList.removeBack()){
         cout << "Passed" << endl;
@@ -292,10 +302,10 @@ void Tester::removeBackTester()
 
     cout << "Test for removeBack on list of size one: ";
     testList.addFront(1);
-    testList.removeBack();
+    returnRemoveBack = testList.removeBack();
     vector<int> testVector = testList.toVector();
 
-    if(testVector[0] == 1){
+    if(testVector[0] != 1){
       cout << "Passed" << endl;
       remBackGrade++;
     }
@@ -323,7 +333,7 @@ void Tester::removeBackTester()
     testList.addFront(9);
     testList.addFront(10);
 
-    testList.removeBack();
+    returnRemoveBack = testList.removeBack();
     testVector = testList.toVector();
     for(int i =0; i < testVector.size(); i++){
         if(testVector[i] != (10-i)){
@@ -332,7 +342,7 @@ void Tester::removeBackTester()
         }
     }
     cout << "Test for calling removeBack on list of more than one: ";
-    if(testVal){
+    if(testVal && returnRemoveBack){
         remBackGrade++;
         cout << "Passed" << endl;
     }
@@ -346,6 +356,7 @@ void Tester::removeFrontTester()
 {
     LinkedListOfInts testList;
     bool testVal = true;
+    bool returnRemoveFront = false;
     cout << "Test for removeFront on empty list: ";
     if(!testList.removeFront()){
         remFrontGrade++;
@@ -356,7 +367,7 @@ void Tester::removeFrontTester()
     }
 
     testList.addFront(1);
-    testList.removeFront();
+    returnRemoveFront = testList.removeFront();
     vector<int> testVector = testList.toVector();
 
     cout << "Test for removeFront on one node: ";
@@ -383,11 +394,11 @@ void Tester::removeFrontTester()
     testList.addFront(2);
     testList.addFront(3);
     testList.addFront(4);
-    testList.removeFront();
-    testList.removeFront();
-
+    returnRemoveFront = testList.removeFront();
+    returnRemoveFront = testList.removeFront();
+    
     testVector = testList.toVector();
-    for(int i = 0; i < testList.size(); i++){
+    for(int i = 0; i < testVector.size(); i++){
       if(testVector[i] != 2-i){
         testVal = false;
         break;
@@ -430,10 +441,10 @@ void Tester::runTest()
     cout << "\n\nConstructor Grade: " << (double(constructorGrade/1) * 100) << "%\n";
     cout << "isEmpty Grade: " << ( double(emptyGrade/3) * 100) << "%\n";
     cout << "size Grade: " << (double(sizeGrade/4) * 100) << "%\n";
-    cout << "search Grade: " << (double(searchGrade/4) * 100) << "%\n";
+    cout << "search Grade: " << (double(searchGrade/5) * 100) << "%\n";
     cout << "addBack Grade: " << (double(addBackGrade/3) * 100) << "%\n";
     cout << "addFront Grade: " << (double(addFrontGrade/3) * 100) << "%\n";
     cout << "removeBack Grade: " << (double(remBackGrade/4) * 100) << "%\n";
     cout << "removeFront Grade: " << (double(remFrontGrade/4)* 100) << "%\n";
-    cout << "\nFinal Grade: " << (double(totalGrade/26) * 100) << "%\n";
+    cout << "\nFinal Grade: " << (double(totalGrade/27) * 100) << "%\n";
 }

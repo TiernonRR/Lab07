@@ -21,7 +21,6 @@ class Tester{
   public:
     Tester();
     void constructorTester();
-    void destructorTester();
     void isEmptyTester();
     void sizeTester();
     void searchTester();

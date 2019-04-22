@@ -1,0 +1,11 @@
+Score of Linked List: 56%
+Failing Grades on isEmpty, removeBack, and removeFront.
+
+    isEmpty seems to always return true, regardless on the contents of the LinkedList.  
+    I believe this is what is causing the failure on removeFront and removeBack, as the first check must be whether the list is empty.  
+    If it falls under the check for an empty list, then nothing will be removed from the list.  Search returned true after looking for a value that should have been 
+    removed when both removeBack and removeFront was called.  The issue may also come down to isEmpty returning true, as this causes removeBack and removeFront to fail.
+    addBack seems to always add to the front.  What is happening may be that the method checks if the list is empty.  Since it will always return true, it sets the next pointer
+    to the previous value of m_front, and sets the new value to m_front.  Upon running valgrind, there were a plethora of memory leaks.  The reason behind this must be that the destructor 
+    calls one of the remove functions until the list is empty.  Since isEmpty, and as a consquence the remove functions, do not work, the destructor deletes nothing leaving behind
+    so many memory leaks.  Fixing isEmpty to return a correct value will likely fix all issues with the LinkedList.
