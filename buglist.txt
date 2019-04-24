@@ -8,8 +8,9 @@ Search returned true after looking for a value that should have been
 removed when both removeBack and removeFront was called.  
 The issue may also come down to isEmpty returning true, as this is what causes removeBack and removeFront to fail.
 Additionally, addBack seems to always add to the front.  
-An explanation may be that the method checks if the list is empty.  Since it will always return true, it simply calls addFront on the value
-that is to be added.  Upon running valgrind, there were a plethora of memory leaks.  
+An explanation may be that the method checks if the list is empty.  Since it will always return true, it may simply call addFront on the value
+that is to be added in order to reuse code.  
+Upon running valgrind, there were a plethora of memory leaks.  
 The reason behind this must be that the destructor 
 calls one of the remove functions until the list is empty.  
 Since isEmpty, and as a consquence the remove functions, do not work, the destructor deletes nothing leaving behind
