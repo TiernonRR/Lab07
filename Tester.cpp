@@ -19,7 +19,7 @@ void Tester::constructorTester()
     LinkedListOfInts testList;
 
     cout << "Constructor Test: ";
-    if(!(testList.size())){
+    if( !(testList.size()) && testList.toVector().size() == 0){
         (constructorGrade)++;
         cout << "Passed" << endl;
     }
@@ -99,7 +99,7 @@ void Tester::sizeTester()
     for(int i = 0; i < 5; i++){
         testList.addFront(5);
     }
-    if(testList.size() == 5){
+    if(testList.size() == 6){
         sizeGrade++;
         cout << "Passed" << endl;
     }
@@ -110,7 +110,7 @@ void Tester::sizeTester()
     cout << "Size works after removal: ";
     testList.removeFront();
 
-    if(testList.size()!=6){
+    if(testList.size()==6){
         cout << "Failed" << endl;
     }
     else{
